@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes.fields import GenericForeignKey
 
 class Subject(models.Model):
     """
@@ -42,3 +44,13 @@ class Module(models.Model):
 
     def __str__(self):
         return self.title
+
+class Content(models.Model):
+    module = models.ForeignKey(Module, related_name='contents')
+
+    # we a limit_choices_to limit the ContentType objects 
+    # that can be used for the generic relationship
+    content_type = models.ForeignKey(ContentType, 
+                        limit_choices_to={'model__in': ('text', 'video', 'image', 'file')})
+    object_id = models.PositiveIntegerField() # primary key of the related model
+    item = GenericForeignKey('content_type', 'object_id')
