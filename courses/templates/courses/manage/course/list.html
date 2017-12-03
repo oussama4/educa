@@ -11,6 +11,7 @@
             <h3> {{ course.title }} </h3>
             <p> <a href="{% url "course_edit" course.id %}"> Edit </a> </p>
             <p> <a href="{% url "course_delete" course.id %}"> Delete </a> </p>
+            <p> <a href="{% url "course_module_update" course.id %}"> Edit modules </a> </p>
         </div>
       {% empty %}
         <p> you haven't created any courses yet </p>
