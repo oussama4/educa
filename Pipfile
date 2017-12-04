@@ -9,6 +9,7 @@ name = "pypi"
 
 django = "*"
 pillow = "*"
+django-braces = "*"
 
 
 [dev-packages]

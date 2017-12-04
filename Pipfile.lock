@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "b505e565573756c383af3896d8c866e6fb3a9b436dbf24bed988463f892525a3"
+            "sha256": "0bca6662fa86eaaa4ac1a9a5b3dd4ba027a2490fe4ed99ca60f1f42c36101d71"
         },
         "host-environment-markers": {
             "implementation_name": "cpython",
@@ -29,10 +29,17 @@
     "default": {
         "django": {
             "hashes": [
-                "sha256:75ce405d60f092f6adf904058d023eeea0e6d380f8d9c36134bac73da736023d",
-                "sha256:8918e392530d8fc6965a56af6504229e7924c27265893f3949aa0529cd1d4b99"
+                "sha256:af18618ce3291be5092893d8522fe3919661bf3a1fb60e3858ae74865a4f07c2",
+                "sha256:9614851d4a7ff8cbd32b73c6076441f377c45a5bbff7e771798fb02c43c31f47"
             ],
-            "version": "==1.11.7"
+            "version": "==2.0"
+        },
+        "django-braces": {
+            "hashes": [
+                "sha256:7e0cb698f3cd17cc58d50aea4a663233f44228144b81d85e1b9bad05aa7f3f80",
+                "sha256:7c5b91c75240ccf2eb124fe3b09dd4978e8f4d412b553bb791920bd55839159c"
+            ],
+            "version": "==1.12.0"
         },
         "olefile": {
             "hashes": [
