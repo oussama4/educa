@@ -38,7 +38,7 @@ class CourseListView(TemplateResponseMixin, View):
     model = Course
     template_name = 'courses/course/list.html'
 
-    def get(self. request, subject=None):
+    def get(self, request, subject=None):
         subjects = Subject.objects.annotate(total_courses=Count('courses'))
         courses = Course.objects.annotate(total_modules=Count('modules'))
 
