@@ -12,6 +12,7 @@ from braces.views import CsrfExemptMixin, JsonRequestResponseMixin
 
 from .models import Course, Module, Content, Subject
 from .forms import ModuleFormSet
+from students.forms import CourseEnrollForm
 
 # mixins
 class OwnerMixin(object):
@@ -52,6 +53,11 @@ class CourseListView(TemplateResponseMixin, View):
 class CourseDetailView(DetailView):
     model = Course
     template_name = 'courses/course/detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(CourseDetailView, self).get_context_data(**kwargs)
+        context['enroll-form'] = CourseEnrollForm(initial={'course': self.object})
+        return context
 
 class ModuleOrderView(CsrfExemptMixin, JsonRequestResponseMixin, View):
     def post(self, request):

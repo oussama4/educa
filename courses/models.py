@@ -24,6 +24,9 @@ class Course(models.Model):
     owner = models.ForeignKey(User, related_name='courses_created')
     # the subject that this course belong to
     subject = models.ForeignKey(Subject, related_name='courses')
+    # the students enrolled in this course
+    students = models.ManyToManyField(User, related_name='courses_joined', blank=True)
+    
     title = models.CharField(max_length=200)
     # a short label that identifies this course
     slug = models.SlugField(max_length=200, unique=True)
