@@ -4,7 +4,7 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.mixins import LoginRequiredMixin
+from braces.views import LoginRequiredMixin
 
 from .forms import CourseEnrollForm
 from courses.models import Course
@@ -20,13 +20,15 @@ class StudentRegistrationView(CreateView):
 
     def form_valid(self, form):
         """
-        executed when vald form data has been posted
+        executed when valid form data has been posted
         """
 
         result = super(StudentRegistrationView, self).form_valid(form)
         cd = form.cleaned_data
-        user = authenticate(username=cd['username'], password=cd['password'])
-        login(self.request, user)
+        user = authenticate(username=cd['username'], password=cd['password1'])
+
+        if user is not None:
+            login(self.request, user)
         return result
 
 class StudentEnrollCourseView(LoginRequiredMixin, FormView):
@@ -36,9 +38,11 @@ class StudentEnrollCourseView(LoginRequiredMixin, FormView):
     def form_valid(self, form):
         self.course = form.cleaned_data['course']
         self.course.students.add(self.request.user)
+        print('form valid')
         return super(StudentEnrollCourseView, self).form_valid(form)
 
     def get_success_url(self):
+        print('url didn t reversed')
         return reverse_lazy('student_course_detail', args=[self.course.id])
 
 class StudentCourseListView(LoginRequiredMixin, ListView):

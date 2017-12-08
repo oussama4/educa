@@ -10,6 +10,7 @@ name = "pypi"
 django = "*"
 pillow = "*"
 django-braces = "*"
+django-embed-video = "*"
 
 
 [dev-packages]

@@ -56,7 +56,7 @@ class CourseDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(CourseDetailView, self).get_context_data(**kwargs)
-        context['enroll-form'] = CourseEnrollForm(initial={'course': self.object})
+        context['enroll_form'] = CourseEnrollForm(initial={'course': self.object})
         return context
 
 class ModuleOrderView(CsrfExemptMixin, JsonRequestResponseMixin, View):
