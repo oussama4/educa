@@ -11,6 +11,7 @@ django = "*"
 pillow = "*"
 django-braces = "*"
 django-embed-video = "*"
+python-memcached = "*"
 
 
 [dev-packages]
